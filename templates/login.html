@@ -1,0 +1,28 @@
+<!-- take you here upon login-->
+<!-- login.html, page which u are redirected to upon logging in is the main page where you can select which chapter you want to learn -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Maths revision</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/login_style.css"> 
+  </head>
+  <body>
+    <h1>H2 Maths Quiz Portal</h1> 
+    <!-- Add the leaderboard here(can use sql to create database)--> <!-- leaderboard for questions solved -->
+    <h2>Practice Now!</h2>
+    <p>Select your Topic</p>
+    <form method="POST" action="/select-topic">
+      <label for="topic">Topic:</label>
+      <select id="topic" name="topic">
+        <option value="Vectors 1">Vectors 1</option>
+        <option value="Vectors 2">Vectors 2</option>
+        <option value="Vectors 3">Vectors 3</option>
+        <option value="Transformation of Curves">Transformation of Curves</option>
+        <option value="Differentiation">Differentiation</option>
+        <option value="Integration">Integration</option>
+      </select><br><br>
+      <input type="submit" value="Start Quiz">
+    </form>
+  </body>
+</html> 

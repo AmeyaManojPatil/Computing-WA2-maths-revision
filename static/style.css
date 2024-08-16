@@ -1,0 +1,57 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: orange; /* Orange background */
+  color: teal; /* Teal text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.login-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: teal; /* Teal text for the header */
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+  text-align: left;
+  color: teal; /* Teal text for labels */
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid teal; /* Teal border for inputs */
+  border-radius: 5px;
+  color: teal; /* Teal text for input fields */
+}
+
+input[type="submit"] {
+  background-color: teal; /* Teal background */
+  color: white; /* White text */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #006666; /* Darker teal on hover */
+}

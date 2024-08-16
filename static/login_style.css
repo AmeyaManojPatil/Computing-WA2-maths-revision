@@ -1,0 +1,57 @@
+/* login_style.css for login.html */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: orange; /* Orange background */
+  color: teal; /* Teal text */
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Ensures the content is centered vertically */
+  text-align: center; /* Center text alignment */
+}
+
+/* Style for the main header */
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+}
+
+/* Style for the subheader */
+h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+/* Style for the form */
+form {
+  background-color: white; /* White background for the form */
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners for the form */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+  width: 100%;
+  max-width: 400px; /* Set a max width for the form */
+}
+
+/* Style for the submit button */
+input[type="submit"] {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding for a more substantial button */
+  border: none; /* No borders */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer/hand icon */
+  font-size: 16px; /* Larger font size */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+input[type="submit"]:active {
+  background-color: #3e8e41; /* Even darker green when clicked */
+}
