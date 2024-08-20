@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect("maths_revision_user.db")
+conn = sqlite3.connect("revision_user.db")
 cursor = conn.cursor()
 
 cursor.execute("SELECT * FROM Users")

@@ -20,35 +20,33 @@ def perpendicular_distance(point, line_point1, line_point2):
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
-    error = None
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
 
-        conn = sqlite3.connect("maths_revision_user.db")  # Ensure correct DB name
+        conn = sqlite3.connect("revise_user.db")  # Ensure correct DB name
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM Users WHERE Username = ?", (username,))
-        users = cursor.fetchall()  # Use fetchall() to get all matching records
+        users = cursor.fetchall()  # Get all matching records
         conn.close()
 
         if users:
-            user = users[0]  # Get the first record (if any)
+            user = users[0]  # Get the first record
             stored_password = user[3]  # Assuming password is at index 3
             if stored_password == password:
+                session.clear()  # Clear any existing session data
                 session['logged_in'] = True
-                return redirect(url_for('login'))
-            else:
-                error = "Invalid username or password."
-        else:
-            error = "Invalid username or password."
+                session['username'] = username  # Store the username for reference
 
-    return render_template("index.html", error=error)
+                # Regardless of whether the credentials match or not, redirect to login
+                return redirect(url_for('login'))
+
+    return render_template("index.html")
 
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
-    if 'logged_in' not in session or not session['logged_in']:
-        return redirect(url_for('home'))
+    # Remove the session check, always render login.html
     return render_template("login.html")
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -61,7 +59,7 @@ def register():
             return render_template("register.html", error="Both fields are required.")
 
         try:
-            conn = sqlite3.connect("maths_revision_user.db")
+            conn = sqlite3.connect("revise_user.db")
             cursor = conn.cursor()
             cursor.execute("SELECT * FROM Users WHERE Username = ?", (username,))
             existing_user = cursor.fetchall()
@@ -128,10 +126,10 @@ def submit_vectors1():
     answer2 = request.form['answer2']
 
     # Define vectors
-    OA = np.array([10, 5, 8])
-    OB = np.array([-2, -10, 3])
-    OC = np.array([8, 4, 5])
-    OD = np.array([-6, -6, -4])
+    OA = np.array([6, 8, -3])
+    OB = np.array([10, -2, 3])
+    OC = np.array([-2, -9, -10])
+    OD = np.array([-2, 5, 3])
 
     # Calculate correct answers
     cos_angle_DAB = cosine_of_angle(OD - OA, OB - OA)
@@ -155,7 +153,9 @@ def submit_vectors1():
     return render_template('results.html', 
                            correct=is_correct1 and is_correct2, 
                            time_taken=round(time_taken, 2), 
-                           fast_enough=fast_enough)
+                           fast_enough=fast_enough,
+                           correct_answer1=correct_answer1,
+                           correct_answer2=correct_answer2)
 
 @app.route('/vectors2')
 def vectors2():

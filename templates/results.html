@@ -4,12 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .result {
+            margin-bottom: 20px;
+        }
+        .result p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        .details {
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            margin-top: 20px;
+        }
+        .details p {
+            font-size: 1.1em;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            font-size: 1.1em;
+            color: #fff;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Quiz Result</h1>
-    <p>Correct: {{ correct }}</p>
-    <p>Time Taken: {{ time_taken }} seconds</p>
-    <p>Fast Enough: {{ fast_enough }}</p>
-    <a href="/vectors1">Try Again</a>
+    <div class="container">
+        <h1>Quiz Result</h1>
+        <div class="result">
+            <p class="{{ 'correct' if correct else 'incorrect' }}">
+                Correct: {{ 'Yes' if correct else 'No' }}
+            </p>
+            <p>Time Taken: {{ time_taken }} seconds</p>
+            <p>Fast Enough: {{ 'Yes' if fast_enough else 'No' }}</p>
+        </div>
+        <div class="details">
+            <p><strong>Correct Answer for (i):</strong> {{ correct_answer1 }}</p>
+            <p><strong>Correct Answer for (ii):</strong> {{ correct_answer2 }}</p>
+        </div>
+        <a href="/vectors1">Try Again</a>
+    </div>
 </body>
 </html>
